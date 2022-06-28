@@ -56,6 +56,14 @@ function playRound(playerMove, cpuMove) {
     }
 }
 
+const btns = document.querySelectorAll("div#moves button");
+btns.forEach(btn => btn.addEventListener("click", function(e) {
+    console.log(e);
+    let playerMove = this.textContent;
+    let result = playRound(playerMove, cpuPlay());
+    console.log(result);
+}));
+
 // let rounds = parseInt(prompt("How many rounds will you play?"));
 
 // for(let i = 0; i < rounds; i++) {
