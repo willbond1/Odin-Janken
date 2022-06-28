@@ -1,13 +1,16 @@
 let playerPoints = 0;
 let cpuPoints = 0;
+let rounds = 5;
 
-const btns =        document.querySelectorAll("div#moves button");
+const btns        = document.querySelectorAll("div#moves button");
 const playerScore = document.querySelector("div#playerScore");
-const cpuScore =    document.querySelector("div#cpuScore");
+const cpuScore    = document.querySelector("div#cpuScore");
+const actionArea  = document.querySelector("div#action");
 
-function updateScore() {
+function updateScore(result = "") {
     playerScore.textContent = `Player: ${playerPoints}`;
     cpuScore.textContent    = `CPU: ${cpuPoints}`;
+    actionArea.textContent  = result;
 }
 
 function getRandomInt(max) {
@@ -67,13 +70,10 @@ function playRound(playerMove, cpuMove) {
 
 updateScore();
 
-btns.forEach(btn => btn.addEventListener("click", function(e) {
+btns.forEach(btn => btn.addEventListener("click", function() {
     let playerMove = this.textContent;
     let result = playRound(playerMove, cpuPlay());
-    updateScore();
-    
-    console.log(e);
-    console.log(result);
+    updateScore(result);
 }));
 
 // let rounds = parseInt(prompt("How many rounds will you play?"));
