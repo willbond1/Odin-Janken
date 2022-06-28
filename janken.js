@@ -56,20 +56,16 @@ function playRound(playerMove, cpuMove) {
     }
 }
 
-function game() {
-    let rounds = parseInt(prompt("How many rounds will you play?"));
+// let rounds = parseInt(prompt("How many rounds will you play?"));
 
-    for(let i = 0; i < rounds; i++) {
-        console.log(`You: ${playerPoints} - CPU: ${cpuPoints}`);
-        let playerMove = prompt("What will you play?");
-        let cpuMove = cpuPlay();
-        let outcome = playRound(playerMove, cpuMove);
-        console.log(outcome);
-    }
+// for(let i = 0; i < rounds; i++) {
+//     console.log(`You: ${playerPoints} - CPU: ${cpuPoints}`);
+//     let playerMove = prompt("What will you play?");
+//     let cpuMove = cpuPlay();
+//     let outcome = playRound(playerMove, cpuMove);
+//     console.log(outcome);
+// }
 
-    (playerPoints > cpuPoints) ? console.log("You win!") :
-        (cpuPoints > playerPoints) ? console.log("You lose!") :
-        console.log("It's a tie!");
-}
-
-game();
+// (playerPoints > cpuPoints) ? console.log("You win!") :
+//     (cpuPoints > playerPoints) ? console.log("You lose!") :
+//     console.log("It's a tie!");
