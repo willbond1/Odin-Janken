@@ -1,6 +1,15 @@
 let playerPoints = 0;
 let cpuPoints = 0;
 
+const btns =        document.querySelectorAll("div#moves button");
+const playerScore = document.querySelector("div#playerScore");
+const cpuScore =    document.querySelector("div#cpuScore");
+
+function updateScore() {
+    playerScore.textContent = `Player: ${playerPoints}`;
+    cpuScore.textContent    = `CPU: ${cpuPoints}`;
+}
+
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
@@ -56,11 +65,14 @@ function playRound(playerMove, cpuMove) {
     }
 }
 
-const btns = document.querySelectorAll("div#moves button");
+updateScore();
+
 btns.forEach(btn => btn.addEventListener("click", function(e) {
-    console.log(e);
     let playerMove = this.textContent;
     let result = playRound(playerMove, cpuPlay());
+    updateScore();
+    
+    console.log(e);
     console.log(result);
 }));
 
