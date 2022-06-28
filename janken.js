@@ -91,13 +91,3 @@ function playGame() {
 updateScore();
 
 btns.forEach(btn => btn.addEventListener("click", playGame));
-
-// let rounds = parseInt(prompt("How many rounds will you play?"));
-
-// for(let i = 0; i < rounds; i++) {
-//     console.log(`You: ${playerPoints} - CPU: ${cpuPoints}`);
-//     let playerMove = prompt("What will you play?");
-//     let cpuMove = cpuPlay();
-//     let outcome = playRound(playerMove, cpuMove);
-//     console.log(outcome);
-// }
