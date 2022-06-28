@@ -1,7 +1,8 @@
 let playerPoints = 0;
 let cpuPoints = 0;
-let rounds = 5;
+let round = 0;
 
+const maxRounds   = 5;
 const btns        = document.querySelectorAll("div#moves button");
 const playerScore = document.querySelector("div#playerScore");
 const cpuScore    = document.querySelector("div#cpuScore");
@@ -68,13 +69,28 @@ function playRound(playerMove, cpuMove) {
     }
 }
 
-updateScore();
-
-btns.forEach(btn => btn.addEventListener("click", function() {
+function playGame() {
+    console.log(this);
     let playerMove = this.textContent;
     let result = playRound(playerMove, cpuPlay());
     updateScore(result);
-}));
+
+    round++;
+    if(round === maxRounds) {
+        let winMsg;
+        (playerPoints > cpuPoints) ? winMsg = "You win!" :
+            (cpuPoints > playerPoints) ? winMsg = "You lose!" :
+            winMsg = "It's a tie!";
+        
+        winMsg += " Refresh to play again.";
+        actionArea.textContent = winMsg;
+        btns.forEach(btn => btn.removeEventListener("click", playGame));
+    }
+}
+
+updateScore();
+
+btns.forEach(btn => btn.addEventListener("click", playGame));
 
 // let rounds = parseInt(prompt("How many rounds will you play?"));
 
@@ -85,7 +101,3 @@ btns.forEach(btn => btn.addEventListener("click", function() {
 //     let outcome = playRound(playerMove, cpuMove);
 //     console.log(outcome);
 // }
-
-// (playerPoints > cpuPoints) ? console.log("You win!") :
-//     (cpuPoints > playerPoints) ? console.log("You lose!") :
-//     console.log("It's a tie!");
